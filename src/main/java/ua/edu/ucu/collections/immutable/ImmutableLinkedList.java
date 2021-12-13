@@ -2,9 +2,7 @@ package ua.edu.ucu.collections.immutable;
 
 import lombok.SneakyThrows;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.LinkedList;
 
 public final class ImmutableLinkedList<E> implements ImmutableList<E> {
     private final int size;
@@ -18,10 +16,10 @@ public final class ImmutableLinkedList<E> implements ImmutableList<E> {
             last = null;
             return;
         }
-        Node<E> first = new Node<>();
-        first.setValue(elements[0]);
-        Node<E> prevNode = first;
-        Node<E> currNode = first;
+        Node<E> firstNode = new Node<>();
+        firstNode.setValue(elements[0]);
+        Node<E> prevNode = firstNode;
+        Node<E> currNode = firstNode;
         for (int i = 1; i < elements.length; i++) {
             currNode = new Node<>();
             currNode.setValue(elements[i]);
@@ -30,7 +28,7 @@ public final class ImmutableLinkedList<E> implements ImmutableList<E> {
             prevNode = currNode;
         }
         size = elements.length;
-        this.first = first;
+        this.first = firstNode;
         this.last = currNode;
     }
 
@@ -42,13 +40,13 @@ public final class ImmutableLinkedList<E> implements ImmutableList<E> {
 
     public ImmutableLinkedList(Node<E> first) {
         this.first = first;
-        int size = 1;
+        int sizeOf = 1;
         Node<E> currNode = first;
         while (currNode.getNext() != null) {
-            size++;
+            sizeOf++;
             currNode = currNode.getNext();
         }
-        this.size = size;
+        this.size = sizeOf;
         this.last = currNode;
     }
 
@@ -232,18 +230,19 @@ public final class ImmutableLinkedList<E> implements ImmutableList<E> {
 
     @Override @SuppressWarnings("unchecked")
     public E[] toArray(E[] a) {
+        E[] arr = (E[]) Arrays.copyOf(a, a.length, a.getClass());
         if (a.length < size) {
-            a = (E[]) Arrays.copyOf(a, size, a.getClass());
+            arr = (E[]) Arrays.copyOf(a, size, a.getClass());
         }
         Node<E> currNode = first;
         for (int i = 0; i < size; i++) {
-            a[i] = currNode.getValue();
+            arr[i] = currNode.getValue();
             currNode = currNode.getNext();
         }
-        for (int i = size; i < a.length; i++) {
-            a[i] = null;
+        for (int i = size; i < arr.length; i++) {
+            arr[i] = null;
         }
-        return a;
+        return arr;
     }
 
     private Node<E> getLinkedListCopy() {
