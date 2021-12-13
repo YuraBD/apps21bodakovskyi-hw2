@@ -17,7 +17,8 @@ public final class ImmutableArrayList<E> implements ImmutableList<E> {
     }
 
     @SuppressWarnings("unchecked")
-    private ImmutableArrayList<E> immutableArrayListFromObjectArray(Object[] arr) {
+    private ImmutableArrayList<E> immutableArrayListFromObjectArray(
+                                                        Object[] arr) {
         return new ImmutableArrayList<>((E[]) arr);
     }
 
@@ -36,7 +37,8 @@ public final class ImmutableArrayList<E> implements ImmutableList<E> {
         Object[] newElements = new Object[elements.length + 1];
         System.arraycopy(elements, 0, newElements, 0, index);
         newElements[index] = e;
-        System.arraycopy(elements, index, newElements, index + 1, elements.length - index);
+        System.arraycopy(elements, index, newElements,
+                          index + 1, elements.length - index);
         return this.immutableArrayListFromObjectArray(newElements);
     }
 
@@ -53,7 +55,8 @@ public final class ImmutableArrayList<E> implements ImmutableList<E> {
         Object[] newElements = new Object[elements.length + c.length];
         System.arraycopy(elements, 0, newElements, 0, index);
         System.arraycopy(c, 0, newElements, index, c.length);
-        System.arraycopy(elements, index, newElements, index + c.length, elements.length - index);
+        System.arraycopy(elements, index, newElements, index + c.length,
+                          elements.length - index);
         return  this.immutableArrayListFromObjectArray(newElements);
     }
 
@@ -72,7 +75,8 @@ public final class ImmutableArrayList<E> implements ImmutableList<E> {
         }
         Object[] newElements = new Object[elements.length - 1];
         System.arraycopy(elements, 0, newElements, 0, index);
-        System.arraycopy(elements, index + 1, newElements, index, elements.length - index - 1);
+        System.arraycopy(elements, index + 1, newElements,
+                          index, elements.length - index - 1);
         return this.immutableArrayListFromObjectArray(newElements);
     }
 
@@ -84,7 +88,8 @@ public final class ImmutableArrayList<E> implements ImmutableList<E> {
         Object[] newElements = new Object[elements.length];
         System.arraycopy(elements, 0, newElements, 0, index);
         newElements[index] = e;
-        System.arraycopy(elements, index + 1, newElements, index + 1, elements.length - index - 1);
+        System.arraycopy(elements, index + 1, newElements,
+                          index + 1, elements.length - index - 1);
         return this.immutableArrayListFromObjectArray(newElements);
     }
 
