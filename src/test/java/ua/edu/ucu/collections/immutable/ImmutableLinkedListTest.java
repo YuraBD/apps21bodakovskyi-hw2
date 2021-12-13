@@ -1,5 +1,6 @@
 package ua.edu.ucu.collections.immutable;
 
+import junit.framework.AssertionFailedError;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -360,5 +361,12 @@ public class ImmutableLinkedListTest {
         String actualResult = im.toString();
 
         assertEquals(expected, actualResult);
+    }
+
+    @Test
+    public void testIsEmpty() {
+        assertFalse(im.isEmpty());
+        im = im.clear();
+        assertTrue(im.isEmpty());
     }
 }
