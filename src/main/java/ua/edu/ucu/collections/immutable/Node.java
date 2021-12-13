@@ -1,11 +1,17 @@
 package ua.edu.ucu.collections.immutable;
 
-public class Node {
-    private Node previous;
-    private Node next;
-    private Object value;
+public class Node<E> {
+    private Node<E> previous;
+    private Node<E> next;
+    private E value;
 
     public Node() {
+    }
+
+    public Node(Node<E> prev, Node<E> next, E value) {
+        this.previous = prev;
+        this.next = next;
+        this.value = value;
     }
 
     @Override
@@ -13,26 +19,28 @@ public class Node {
         return value.toString();
     }
 
-
-    public Node getPrevious() {
-        return null;
+    public Node<E> getPrevious() {
+        return previous;
     }
 
-    public void setPrevious(Node prev) {
+    public void setPrevious(Node<E> prev) {
+        this.previous = prev;
     }
 
-    public Object getValue() {
-        return null;
+    public E getValue() {
+        return value;
     }
 
-    public void setValue(Object val) {
+    public void setValue(E val) {
+        this.value = val;
     }
 
-    public Node getNext() {
-        return null;
+    public Node<E> getNext() {
+        return next;
     }
 
-    public void setNext(Node ne) {
+    public void setNext(Node<E> ne) {
+        this.next = ne;
     }
 }
 

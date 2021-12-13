@@ -26,6 +26,12 @@ public class StackTest {
     }
 
     @Test
+    public void popFromEmptyStack() {
+        stack = new Stack();
+        assertEquals(null, stack.pop());
+    }
+
+    @Test
     public void peek() {
         assertEquals(5, stack.peek());
     }

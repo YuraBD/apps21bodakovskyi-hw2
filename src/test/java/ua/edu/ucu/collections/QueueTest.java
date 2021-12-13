@@ -17,14 +17,20 @@ public class QueueTest {
 
     @Test
     public void peek() {
+        assertEquals(1, queue.peek());
+    }
+
+    @Test
+    public void dequeue() {
         assertEquals(1, queue.dequeue());
         assertEquals(2, queue.dequeue());
         assertEquals(3, queue.dequeue());
     }
 
     @Test
-    public void dequeue() {
-        assertEquals(1, queue.peek());
+    public void dequeueEmptyQueue() {
+        queue = new Queue();
+        assertEquals(null, queue.dequeue());
     }
 
 }

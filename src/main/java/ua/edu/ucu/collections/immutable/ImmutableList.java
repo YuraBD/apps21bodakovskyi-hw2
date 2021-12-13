@@ -1,31 +1,33 @@
 package ua.edu.ucu.collections.immutable;
 
 
-public interface ImmutableList {
+public interface ImmutableList<E> {
 
-    ImmutableList add(Object e);
+    ImmutableList<E> add(E e);
 
-    ImmutableList add(int index, Object e);
+    ImmutableList<E> add(int index, E e);
 
-    ImmutableList addAll(Object[] c);
+    ImmutableList<E> addAll(E[] c);
 
-    ImmutableList addAll(int index, Object[] c);
+    ImmutableList<E> addAll(int index, E[] c);
 
-    Object get(int index);
+    E get(int index);
 
-    ImmutableList remove(int index);
+    ImmutableList<E> remove(int index);
 
-    ImmutableList set(int index, Object e);
+    ImmutableList<E> set(int index, E e);
 
-    int indexOf(Object e);
+    int indexOf(E e);
 
     int size();
 
-    ImmutableList clear();
+    ImmutableList<E> clear();
 
     boolean isEmpty();
 
     Object[] toArray();
+
+    E[] toArray(E[] a);
 
     @Override
     String toString();
